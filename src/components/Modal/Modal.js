@@ -10,10 +10,10 @@ const ModalBody = ({ closeModal }) => {
   const [name, setName] = useState("");
   const [id, setId] = useState(null);
   const [image, setImage] = useState({});
+  const [imageUrl, setImageUrl] = useState(null);
 
   const inputImage = useRef(null);
 
-  const [imageUrl, setImageUrl] = useState(null);
   const db = fireBaseApp.firestore();
 
   const onChangeFile = async (e) => {
@@ -23,7 +23,7 @@ const ModalBody = ({ closeModal }) => {
     } else {
       const storageVar = fireBaseApp.storage().ref();
       const fileRef = storageVar.child(file.name);
-      await fileRef.put(image);
+      await fileRef.put(file);
       setImageUrl(await fileRef.getDownloadURL());
       setImage(file);
     }
@@ -40,14 +40,14 @@ const ModalBody = ({ closeModal }) => {
 
   const getFormData = async () => {
     console.log(name, id, imageUrl);
-    await db.collection("users").doc("employee").set(
+    await db.collection("employee").add(
       {
         name: name,
         id: id,
         image: imageUrl,
       },
       closeModal()
-    );
+    )
   };
 
   useEffect(() => {

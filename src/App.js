@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const usersCollection = await db.collection("users").get();
+      const usersCollection = await db.collection("employee").get();
       setArr(
         usersCollection.docs.map((doc) => {
           return doc.data();
@@ -27,9 +27,12 @@ function App() {
       {arr.map((item) => {
         return (
           <div key={item.id}>
-            {console.log(item.image)}
             {item.image && (
-              <img src={item.image} alt="pic" />
+              <img
+                style={{ width: "25vw", height: "25vh" }}
+                src={item.image}
+                alt="pic"
+              />
             )}
             {item.id && <p>{item.id}</p>}
             {item.name && <p>{item.name}</p>}
