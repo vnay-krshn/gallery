@@ -2,6 +2,8 @@ import { Button, TextField } from "@material-ui/core";
 import React, { useEffect, useRef, useState } from "react";
 import "./styles.css";
 import close from "../../assets/close.svg";
+import { fireBaseApp } from "../../firebase/firebase";
+import "firebase/firestore";
 
 const ModalBody = ({ closeModal }) => {
   const [displayFileName, setDisplayFileName] = useState(false);
@@ -11,11 +13,18 @@ const ModalBody = ({ closeModal }) => {
 
   const inputImage = useRef(null);
 
-  const onChangeFile = (e) => {
+  const [imageUrl, setImageUrl] = useState(null);
+  const db = fireBaseApp.firestore();
+
+  const onChangeFile = async (e) => {
     var file = e.target.files[0];
     if (!file.name.match(/.(jpg|jpeg|png|gif)$/i)) {
       window.alert("Invalid file format");
     } else {
+      const storageVar = fireBaseApp.storage().ref();
+      const fileRef = storageVar.child(file.name);
+      await fileRef.put(image);
+      setImageUrl(await fileRef.getDownloadURL());
       setImage(file);
     }
   };
@@ -29,9 +38,16 @@ const ModalBody = ({ closeModal }) => {
     setDisplayFileName(false);
   };
 
-  const getFormData = () => {
-    closeModal();
-    console.log(name, id, image);
+  const getFormData = async () => {
+    console.log(name, id, imageUrl);
+    await db.collection("users").doc("employee").set(
+      {
+        name: name,
+        id: id,
+        image: imageUrl,
+      },
+      closeModal()
+    );
   };
 
   useEffect(() => {
