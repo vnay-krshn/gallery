@@ -1,38 +1,23 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import "./styles.css";
-import { Button } from "@material-ui/core";
+import { Button, Modal } from "@material-ui/core";
+import ModalBody from "../Modal/Modal";
 
 const Header = () => {
-  const inputImage = useRef(null);
-
-  const onChangeFile = (e) => {
-    var file = e.target.files[0];
-
-    if (!file.name.match(/.(jpg|jpeg|png|gif)$/i)) {
-      window.alert("Invalid file format");
-    }
-  };
-
-  const uploadImage = () => {
-    inputImage.current.click();
-  };
+  const [open, setOpen] = useState(false);
 
   return (
     <div>
       <AppBar position="static">
         <Toolbar className="navbar">
-          <Button onClick={uploadImage}>Upload</Button>
-          <input
-            type="file"
-            ref={inputImage}
-            style={{ display: "none" }}
-            onChange={onChangeFile}
-            accept=".jpg,.jpeg,.png"
-          />
+          <Button onClick={() => setOpen(true)}>Upload</Button>
         </Toolbar>
       </AppBar>
+      <Modal open={open}>
+        <ModalBody closeModal={() => setOpen(false)} />
+      </Modal>
     </div>
   );
 };

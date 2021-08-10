@@ -1,16 +1,17 @@
-.navbar{
-    background: #fff;
-    display: flex;
-    justify-content: flex-end;
+.navbar {
+  background: #fff;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.navbar .MuiButton-root{
-    background: rgb(26, 115, 232);
-    color: #ffff;
-    width: 12vw;
+.navbar .MuiButton-root {
+  background: rgb(26, 115, 232);
+  color: #ffff;
+  width: 12vw;
 }
 
-.navbar .MuiButton-root:hover{
-    background: rgb(18, 91, 187);
+.navbar .MuiButton-root:hover {
+  background: rgb(18, 91, 187);
 }
+
 
