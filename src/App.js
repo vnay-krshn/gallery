@@ -29,7 +29,7 @@ function App() {
           <div key={item.id}>
             {item.image && (
               <img
-                style={{ width: "25vw", height: "25vh" }}
+                width='50'
                 src={item.image}
                 alt="pic"
               />

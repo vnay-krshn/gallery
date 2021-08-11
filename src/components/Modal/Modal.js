@@ -39,22 +39,21 @@ const ModalBody = ({ closeModal }) => {
   };
 
   const getFormData = async () => {
-    console.log(name, id, imageUrl);
     await db.collection("employee").add(
       {
         name: name,
         id: id,
         image: imageUrl,
       },
-      closeModal()
-    )
+      resetForm()
+    );
   };
 
   useEffect(() => {
-    if (image) {
+    if (imageUrl) {
       setDisplayFileName(true);
     }
-  }, [image]);
+  }, [imageUrl]);
 
   return (
     <div className="modal-body">
@@ -87,14 +86,20 @@ const ModalBody = ({ closeModal }) => {
           accept=".jpg,.jpeg,.png"
         />
         {displayFileName && <label>{image.name}</label>}
-        <Button
-          type="submit"
-          variant="contained"
-          color="secondary"
-          className="complete-btn"
-        >
-          Done
-        </Button>
+        {displayFileName ? (
+          <Button
+            type="submit"
+            variant="contained"
+            color="secondary"
+            className="complete-btn"
+          >
+            Done
+          </Button>
+        ) : (
+          <Button variant="contained"  className="complete-btn" disabled>
+            Done
+          </Button>
+        )}
       </form>
     </div>
   );
