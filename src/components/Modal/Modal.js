@@ -5,7 +5,7 @@ import close from "../../assets/close.svg";
 import { fireBaseApp } from "../../firebase/firebase";
 import "firebase/firestore";
 
-const ModalBody = ({ closeModal }) => {
+const ModalBody = ({ closeModal, fetchUserData }) => {
   const [displayFileName, setDisplayFileName] = useState(false);
   const [name, setName] = useState("");
   const [id, setId] = useState(null);
@@ -21,11 +21,11 @@ const ModalBody = ({ closeModal }) => {
     if (!file.name.match(/.(jpg|jpeg|png|gif)$/i)) {
       window.alert("Invalid file format");
     } else {
+      setImage(file);
       const storageVar = fireBaseApp.storage().ref();
       const fileRef = storageVar.child(file.name);
       await fileRef.put(file);
       setImageUrl(await fileRef.getDownloadURL());
-      setImage(file);
     }
   };
 
@@ -47,6 +47,7 @@ const ModalBody = ({ closeModal }) => {
       },
       resetForm()
     );
+    fetchUserData()
   };
 
   useEffect(() => {
@@ -70,10 +71,12 @@ const ModalBody = ({ closeModal }) => {
           onChange={(e) => setName(e.target.value)}
         />
         <TextField
+          id="Id"
           label="Employee ID"
           variant="outlined"
           type="number"
           onChange={(e) => setId(parseInt(e.target.value))}
+          inputmode="numeric"
         />
         <Button variant="contained" onClick={uploadImage}>
           Choose Image

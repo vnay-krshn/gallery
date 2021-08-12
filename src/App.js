@@ -2,39 +2,57 @@ import Header from "./components/Header/Header";
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import "firebase/firestore";
-import { OpenSeaDragonViewer } from "./components/OpenSeaDragon/OpenSeaDragon";
+import { fireBaseApp } from "./firebase/firebase";
+import ImageDisplay from "./components/ImageDisplay/ImageDisplay";
+import { Modal } from "@material-ui/core";
 
 function App() {
-  const [openSeaImg, setOpenSeaImages] = useState([]);
-  const [selectedImage, setSelectedImage] = useState();
+  const [arr, setArr] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [imgData, setImgData] = useState({});
 
+  const db = fireBaseApp.firestore();
 
-
-  useEffect(() => {
-    const getImages = async () => {
-      const response = await fetch(
-        "https://openslide-demo.s3.dualstack.us-east-1.amazonaws.com/info.json"
-      );
-      let image = await response.json();
-      setOpenSeaImages(image.groups);
-    };
-    getImages();
-  }, []);
-
-  const selectImage = (slide) => {
-    setSelectedImage(slide.slide);
+  const fetchUsers = async () => {
+    const usersCollection = await db.collection("employee").get();
+    setArr(
+      usersCollection.docs.map((doc) => {
+        return doc.data();
+      })
+    );
   };
 
   useEffect(() => {
-    if (openSeaImg[0]) {
-      selectImage(openSeaImg[0].slides[0]);
-    }
-  }, [openSeaImg]);
+    fetchUsers();
+  }, []);
+
+  const handleOnClick = (item) => {
+    setOpen(true);
+    setImgData(item);
+  };
 
   return (
     <div>
-      <Header />
-      <OpenSeaDragonViewer image={selectedImage} />
+      <Header fetchUserData={fetchUsers} />
+      <div className="container">
+        {[...Array(120)].map(() => (
+          <>
+            {arr.map((item) => {
+              return (
+                <img
+                  src={item.image}
+                  alt="pic"
+                  id="img-rpt"
+                  onClick={() => handleOnClick(item)}
+                />
+              );
+            })}
+          </>
+        ))}
+      </div>
+      <Modal open={open}>
+        <ImageDisplay closeModal={() => setOpen(false)} props={imgData} />
+      </Modal>
     </div>
   );
 }

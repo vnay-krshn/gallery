@@ -1,0 +1,37 @@
+.image-display {
+  margin: 8em 24em;
+  width: 40vw;
+  background: #fff;
+  border-radius: 1em;
+  padding: 2em;
+}
+
+.image-display .close-icon {
+  height: 3vh;
+  width: 1.5vw;
+  padding: 0.4em;
+  background: white;
+  border-radius: 1em;
+  align-self: flex-end;
+}
+
+.image-display .close-icon:hover {
+  background: whitesmoke;
+}
+
+.data-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.data-container #user-image{
+    align-self: center;
+    width: 25vw;
+    height: 30vh;
+}
+
+.data-container p{
+    align-self: center;
+    padding: 0.5em;
+}

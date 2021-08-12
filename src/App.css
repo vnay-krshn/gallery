@@ -7,3 +7,21 @@ body{
     background: rgb(240, 240, 240);
 }
 
+.container{
+    background: url('./assets/2.jpg') no-repeat top center;
+    object-fit: cover;
+    margin: 1em 0em 0em 16em;
+    height: 85vh;
+    width: 60vw;
+    border: black 1px solid;
+    display: grid;
+    grid-template-columns: repeat(30,1.6em);
+}
+
+.container #img-rpt{
+    width: 2vw;
+    height: 4vh;
+    margin: 0em;
+    opacity: 0.6;
+}
+
