@@ -5,7 +5,7 @@ import "./styles.css";
 import { Button, Modal } from "@material-ui/core";
 import ModalBody from "../Modal/Modal";
 
-const Header = ({fetchUserData}) => {
+const Header = ({ fetchUserData }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -16,7 +16,10 @@ const Header = ({fetchUserData}) => {
         </Toolbar>
       </AppBar>
       <Modal open={open}>
-        <ModalBody closeModal={() => setOpen(false)} fetchUserData={fetchUserData}/>
+        <ModalBody
+          closeModal={() => setOpen(false)}
+          fetchUserData={fetchUserData}
+        />
       </Modal>
     </div>
   );

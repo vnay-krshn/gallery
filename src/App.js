@@ -12,6 +12,7 @@ function App() {
   const [imgData, setImgData] = useState({});
 
   const db = fireBaseApp.firestore();
+  const [showUserDetails, setShowUserDetails] = useState(false);
 
   const fetchUsers = async () => {
     const usersCollection = await db.collection("employee").get();
@@ -31,6 +32,14 @@ function App() {
     setImgData(item);
   };
 
+  const showDetails = () => {
+    setShowUserDetails(true);
+  };
+
+  const hideDetails = () => {
+    setShowUserDetails(false);
+  };
+
   return (
     <div>
       <Header fetchUserData={fetchUsers} />
@@ -39,12 +48,17 @@ function App() {
           <>
             {arr.map((item) => {
               return (
-                <img
-                  src={item.image}
-                  alt="pic"
-                  id="img-rpt"
-                  onClick={() => handleOnClick(item)}
-                />
+                <>
+                  <img
+                    onMouseOver={showDetails}
+                    onMouseOut={hideDetails}
+                    src={item.image}
+                    alt="pic"
+                    id="img-rpt"
+                    onClick={() => handleOnClick(item)}
+                  />
+                  {/* {showUserDetails && <p>{item.name}</p>} */}
+                </>
               );
             })}
           </>
