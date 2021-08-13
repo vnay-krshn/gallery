@@ -1,11 +1,15 @@
 .image-display {
   margin: auto;
-  width: 40vw;
-  background: #fff;
+  width: 100vw;
+  background: rgba(255,255,255,0.8);
   border-radius: 1em;
   padding: 2em;
-  top:50%;
-  transform:translateY(50%);
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  /* top:50%; */
+  /* transform:translateY(50%); */
 }
 
 .image-display .close-icon {
@@ -32,8 +36,10 @@
 
 .data-container #user-image{
     align-self: center;
-    width: 25vw;
-    height: 30vh;
+    width: 35vw;
+    /* height: 30vh; */
+    height:auto;
+    max-height:80vh;
 }
 
 .data-container p{

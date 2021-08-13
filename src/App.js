@@ -35,6 +35,7 @@ function App() {
     <div>
       <Header fetchUserData={fetchUsers} />
       <h1>Aaravam 2021</h1>
+     
       <div className="container">
         {[...Array(120)].map(() => (
           <>
@@ -55,9 +56,11 @@ function App() {
           </>
         ))}
       </div>
+      
       <Modal open={open}>
         <ImageDisplay closeModal={() => setOpen(false)} props={imgData} />
       </Modal>
+      <p className="instructions">Upload your favourite onam pictures here and make it a more memorable one. <i>The photos are once uploaded cannot be deleted.</i></p>
     </div>
   );
 }
