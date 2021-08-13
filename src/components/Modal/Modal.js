@@ -39,15 +39,17 @@ const ModalBody = ({ closeModal, fetchUserData }) => {
   };
 
   const getFormData = async () => {
-    await db.collection("employee").add(
-      {
-        name: name,
-        id: id,
-        image: imageUrl,
-      },
-      resetForm()
-    );
-    fetchUserData()
+    if(name && id && imageUrl){
+      await db.collection("employee").add(
+        {
+          name: name,
+          id: id,
+          image: imageUrl,
+        },
+        resetForm()
+      );
+      fetchUserData();
+    }
   };
 
   useEffect(() => {
@@ -66,19 +68,17 @@ const ModalBody = ({ closeModal, fetchUserData }) => {
           onClick={resetForm}
         />
         <TextField
+          label="Employee ID"
+          variant="outlined"
+          type='number'
+          onChange={(e) => setId(e.target.value)}
+        />
+        <TextField
           label="Name"
           variant="outlined"
           onChange={(e) => setName(e.target.value)}
         />
-        <TextField
-          id="Id"
-          label="Employee ID"
-          variant="outlined"
-          type="number"
-          onChange={(e) => setId(parseInt(e.target.value))}
-          inputmode="numeric"
-        />
-        <Button variant="contained" onClick={uploadImage}>
+        <Button variant="contained" color="primary" onClick={uploadImage}>
           Choose Image
         </Button>
         <input
@@ -99,7 +99,7 @@ const ModalBody = ({ closeModal, fetchUserData }) => {
             Done
           </Button>
         ) : (
-          <Button variant="contained"  className="complete-btn" disabled>
+          <Button variant="contained" className="complete-btn" disabled>
             Done
           </Button>
         )}
