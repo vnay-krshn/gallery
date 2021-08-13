@@ -81,3 +81,6 @@ label.fileInfo {
   font-size: 15px;
   color: #3864ed;
 }
+.MuiButton-containedPrimary:hover{
+  background-color:#ccc !important;
+}
