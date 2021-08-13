@@ -1,18 +1,23 @@
 .image-display {
-  margin: 8em 24em;
+  margin: auto;
   width: 40vw;
   background: #fff;
   border-radius: 1em;
   padding: 2em;
+  top:50%;
+  transform:translateY(50%);
 }
 
 .image-display .close-icon {
-  height: 3vh;
-  width: 1.5vw;
-  padding: 0.4em;
-  background: white;
-  border-radius: 1em;
+  width: 15px;
+  height:15px;
+  padding:10px;
+  border-radius:100%;
   align-self: flex-end;
+  cursor:pointer;
+  position:absolute;
+  right:10px;
+  top:10px;
 }
 
 .image-display .close-icon:hover {
@@ -32,6 +37,8 @@
 }
 
 .data-container p{
-    align-self: center;
-    padding: 0.5em;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 15px;
+  color: #3864ed;
 }

@@ -88,7 +88,7 @@ const ModalBody = ({ closeModal, fetchUserData }) => {
           onChange={onChangeFile}
           accept=".jpg,.jpeg,.png"
         />
-        {displayFileName && <label>{image.name}</label>}
+        {displayFileName && <label className="fileInfo">{image.name}</label>}
         {displayFileName ? (
           <Button
             type="submit"

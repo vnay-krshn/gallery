@@ -1,25 +1,31 @@
 .modal-body {
-  margin: 8em 24em;
-  width: 40vw;
+  margin: auto;
+  width: 34vw;
   background: #fff;
   border-radius: 1em;
-  padding: 2em;
+  padding: 4em;
+  position:relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .modal-body .form {
-  height: 45vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
 .modal-body .close-icon {
-  height: 3vh;
-  width: 1.5vw;
-  padding: 0.4em;
-  background: white;
-  border-radius: 1em;
+  width: 15px;
+  height:15px;
+  padding:10px;
+  border-radius:100%;
   align-self: flex-end;
+  cursor:pointer;
+  position:absolute;
+  right:10px;
+  top:10px;
 }
 
 .modal-body .close-icon:hover {
@@ -30,7 +36,48 @@
   width: 8vw;
   align-self: flex-end;
 }
-
-.modal-body .form #id{
-  
+.modal-body .MuiOutlinedInput-root{
+  margin-bottom:20px;
+}
+.modal-body .MuiOutlinedInput-notchedOutline{
+  border-color:rgba(0, 0, 0, 0.4);
+  color:#646262 !important;
+}
+.modal-body .MuiFormLabel-root{
+  color:#646262;
+}
+.modal-body .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(0, 0, 0, 0.4);
+  border-width: 2px;
+}
+.modal-body .MuiFormLabel-root.Mui-focused{
+  color:#646262;
+}
+.modal-body .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline{
+  color:rgba(0, 0, 0, 0.4);
+}
+.modal-body .MuiButton-contained{
+  margin-bottom:20px;
+  box-shadow:none;
+  background:#ccc;
+  color:#333;
+  box-shadow:none !important;
+  text-transform:none;
+}
+.modal-body .MuiButton-contained.complete-btn{
+  background:#3864ed;
+  color:#fff;
+  width:100%;
+  padding:7px 0;
+  font-weight:bold;
+  text-transform:uppercase;
+}
+.modal-body .MuiButton-contained.complete-btn.Mui-disabled{
+  opacity:0.5;
+}
+label.fileInfo {
+  padding: 10px 0;
+  text-align: center;
+  font-size: 15px;
+  color: #3864ed;
 }

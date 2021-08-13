@@ -34,17 +34,22 @@ function App() {
   return (
     <div>
       <Header fetchUserData={fetchUsers} />
+      <h1>Aaravam 2021</h1>
       <div className="container">
         {[...Array(120)].map(() => (
           <>
             {arr.map((item) => {
               return (
+                <div className="grid__item" onClick={() => handleOnClick(item)}>
+                 <div className="grid__item-inner">
                 <img
                   src={item.image}
                   alt="pic"
                   id="img-rpt"
-                  onClick={() => handleOnClick(item)}
+                  
                 />
+                </div>
+                </div> 
               );
             })}
           </>

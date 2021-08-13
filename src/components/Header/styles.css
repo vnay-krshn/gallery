@@ -1,17 +1,26 @@
+header{
+  background:transparent !important;
+}
 .navbar {
-  background: #fff;
+  background:transparent !important;
+  background-size:50% 50%;
   display: flex;
   justify-content: flex-end;
 }
 
 .navbar .MuiButton-root {
-  background: rgb(26, 115, 232);
-  color: #ffff;
+  background: #ee7150;
+  color: #fff;
   width: 12vw;
+  border-radius:30px;
 }
-
-.navbar .MuiButton-root:hover {
-  background: rgb(18, 91, 187);
+.navbar .MuiButton-root .MuiButton-label{
+  font-weight:bold;
 }
-
+.navbar .MuiButton-root:hover{
+  background:#3864ed;
+}
+.MuiAppBar-root{
+  box-shadow:none !important;
+}
 
