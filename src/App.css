@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -9,26 +10,23 @@ body{
     height:100vh;
     width:100%;
 }
-h1{
+.instructions, h1{
     color:#fff;
-    font-family: 'Pacifico', cursive;
-    text-align:center;
-    margin:1vw 0;
+    margin:3vw 0;
     letter-spacing:1px;
+    text-align:center;
+}
+h1{
+    font:600 2.5rem 'Berkshire Swash', cursive;
 }
 .instructions{
-    color:#fff;
-    text-align:center;
-    margin:1vw 0;
     font-size:1rem;
-    letter-spacing:1px;
     font-family: 'Pacifico', cursive;
 }
 .instructions i{
-    font-size:small;
-    font-family:"Roboto", "Helvetica", "Arial", sans-serif;
+    font:italic 9px "Roboto", "Helvetica", "Arial", sans-serif;
+    margin-top: 10px;
     display:block;
-    font-style:italic;
 }
 .container{
     background: url('./assets/2.jpg') no-repeat center center / cover;
@@ -46,6 +44,7 @@ h1{
     height:100%;
     margin: 0em;
     opacity:1;
+    object-fit:cover;
 }
 .grid__item{
     width:2.5vw;
@@ -73,3 +72,8 @@ h1{
 .grid__item:hover .grid__item-inner{
     opacity:0.9;
 }
+@media screen and (max-width:992px){
+    .container{
+      height: calc(48vh - 81px);
+    }
+  }

@@ -13,6 +13,7 @@ header{
   color: #fff;
   width: 12vw;
   border-radius:30px;
+  min-width:100px;
 }
 .navbar .MuiButton-root .MuiButton-label{
   font-weight:bold;

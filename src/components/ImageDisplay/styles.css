@@ -36,7 +36,7 @@
 
 .data-container #user-image{
     align-self: center;
-    width: 35vw;
+    width: auto;
     /* height: 30vh; */
     height:auto;
     max-height:80vh;
