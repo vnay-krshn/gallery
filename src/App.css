@@ -21,7 +21,7 @@ h1{
 }
 .instructions{
     font-size:1rem;
-    font-family: 'Pacifico', cursive;
+    font-family: 'Berkshire Swash', cursive;
 }
 .instructions i{
     font:italic 9px "Roboto", "Helvetica", "Arial", sans-serif;
@@ -74,6 +74,6 @@ h1{
 }
 @media screen and (max-width:992px){
     .container{
-      height: calc(48vh - 81px);
+      height: calc(60vh - 81px);
     }
   }
