@@ -12,7 +12,7 @@ body{
 }
 .instructions, h1{
     color:#fff;
-    margin:3vw 0;
+    margin:1.5vw 0;
     letter-spacing:1px;
     text-align:center;
 }
@@ -75,5 +75,8 @@ h1{
 @media screen and (max-width:992px){
     .container{
       height: calc(60vh - 81px);
+    }
+    .instructions, h1{
+        margin:3vw 0;
     }
   }
