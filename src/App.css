@@ -31,7 +31,7 @@ h1{
 .container{
     background: url('./assets/2.jpg') no-repeat center center / cover;
     margin: auto;
-    height:calc(70vh - 81px);
+    height:calc(69vh - 81px);
     width: 70vw;
     overflow:hidden;
     border: white 2vw solid;
